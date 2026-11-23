@@ -1,15 +1,11 @@
 name: mac probe
 on: [push, workflow_dispatch]
 jobs:
-  m15intel:
+  xcode:
     runs-on: macos-15-intel
     steps:
-      - run: sw_vers && uname -m
-  m13:
-    runs-on: macos-13
-    steps:
-      - run: sw_vers
-  win:
-    runs-on: windows-latest
-    steps:
-      - run: ver
+      - run: |
+          ls /Applications | grep -i xcode || true
+          xcodebuild -version
+          swift --version
+          xcrun --sdk iphoneos --show-sdk-version
