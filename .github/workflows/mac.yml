@@ -1,0 +1,11 @@
+name: mac probe
+on: [push, workflow_dispatch]
+jobs:
+  m13:
+    runs-on: macos-13
+    steps:
+      - run: sw_vers && uname -m
+  u:
+    runs-on: ubuntu-latest
+    steps:
+      - run: uname -a
